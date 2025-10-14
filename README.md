@@ -70,7 +70,7 @@ MVP
 - dotenv-rails
 
 ## 画面遷移図
-Figma:　https://www.figma.com/design/kVI7ZYC8jkJQInJx7EMkz6/%E7%84%A1%E9%A1%8C?node-id=0-1&t=Qlzw6164XsuVn0Po-1
+Figma: https://www.figma.com/design/kVI7ZYC8jkJQInJx7EMkz6/%E7%84%A1%E9%A1%8C?node-id=0-1&t=12dia0A6LaKqYzhC-1
 
 ### READMEに記載した機能
 - [x] ユーザー登録機能
