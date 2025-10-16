@@ -92,7 +92,7 @@ Figma: https://www.figma.com/design/kVI7ZYC8jkJQInJx7EMkz6/%E7%84%A1%E9%A1%8C?no
 - [x] パスワード
 
 ### ER図
-![ER図](https://i.gyazo.com/76b7ea96732ff9f8c3fdd1e5c767b3f9.png)
+![ER図](https://i.gyazo.com/7c2ab7d5951fe0a6e7aaaf65b15ae668.png)
 
 Lucidchart  
 https://lucid.app/lucidchart/016fd1d5-e2e3-4dff-904d-0ef388b8bc90/edit?viewport_loc=228%2C307%2C565%2C1149%2C0_0&invitationId=inv_ff34c684-1688-4f45-9836-83f566d05057
