@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password: password
+  pool: 5
+
+development:
+  <<: *default
+  database: kirocco_development
+
+test:
+  <<: *default
+  database: kirocco_test
+
+production:
+  <<: *default
+  database: kirocco_production
+  username: postgres
+  password: password
