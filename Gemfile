@@ -69,4 +69,3 @@ group :test do
 end
 
 gem "bootstrap", "~> 5.3"
-gem "sassc-rails"
