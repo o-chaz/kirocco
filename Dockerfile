@@ -5,6 +5,11 @@ RUN apt-get update -qq && apt-get install -y nodejs npm postgresql-client
 WORKDIR /app
 
 COPY Gemfile Gemfile.lock ./
+
+# NodeとYarnをインストール
+RUN apt-get update -qq && apt-get install -y nodejs npm
+RUN npm install -g yarn
+
 RUN bundle install
 
 COPY . /app
