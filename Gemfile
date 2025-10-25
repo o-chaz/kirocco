@@ -39,3 +39,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'marcel'

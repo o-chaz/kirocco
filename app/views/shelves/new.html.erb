@@ -1,22 +1,9 @@
-<h2>新しい棚を作る</h2>
+<h1>New shelf</h1>
 
-<%= form_with model: @shelf, local: true do |f| %>
-  <div>
-    <%= f.label :title, "タイトル" %><br>
-    <%= f.text_field :title %>
-  </div>
+<%= render "form", shelf: @shelf %>
 
-  <div>
-    <%= f.label :description, "説明" %><br>
-    <%= f.text_area :description %>
-  </div>
+<br>
 
-  <div>
-    <%= f.label :image, "画像" %><br>
-    <%= f.file_field :image %>
-  </div>
-
-  <div>
-    <%= f.submit "棚を作成" %>
-  </div>
-<% end %>
+<div>
+  <%= link_to "Back to shelves", shelves_path %>
+</div>
