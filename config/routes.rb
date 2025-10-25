@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :shelves
+  resources :shelves do
+    resources :items, only: [:create, :show, :edit, :update, :destroy]
+  end
   get 'pages/home'
 
   devise_scope :user do

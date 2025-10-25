@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_10_26_100000) do
+ActiveRecord::Schema[7.1].define(version: 2025_10_26_100003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.bigint "shelf_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.text "description"
+    t.date "purchased_on"
+    t.string "purchased_at"
+    t.index ["shelf_id"], name: "index_items_on_shelf_id"
+  end
 
   create_table "shelves", force: :cascade do |t|
     t.string "title"
@@ -20,7 +33,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_26_100000) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
     t.index ["user_id"], name: "index_shelves_on_user_id"
   end
 
@@ -36,5 +48,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_26_100000) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "items", "shelves"
   add_foreign_key "shelves", "users"
 end

@@ -1,0 +1,19 @@
+<h2><%= @item.title %></h2>
+
+<div class="item-detail">
+  <% if @item.image.present? %>
+    <%= image_tag @item.image.url, size: "300x300" %>
+  <% end %>
+
+  <p><strong>説明:</strong> <%= @item.description.presence || "なし" %></p>
+  <p><strong>購入日:</strong> <%= @item.purchased_on %></p>
+  <p><strong>購入場所:</strong> <%= @item.purchased_at %></p>
+
+  <div class="actions">
+    <%= link_to '編集', edit_shelf_item_path(@shelf, @item), class: "btn" %> |
+    <%= form_with url: shelf_item_path(@shelf, @item), method: :delete, data: { turbo: false } do %>
+    <%= button_tag '削除', class: "btn btn-danger", onclick: "return confirm('本当に削除しますか？');" %>
+    <% end %>
+    <%= link_to '棚に戻る', shelf_path(@shelf), class: "btn" %>
+  </div>
+</div>
