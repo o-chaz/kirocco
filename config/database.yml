@@ -16,6 +16,4 @@ test:
 
 production:
   <<: *default
-  database: kirocco_production
-  username: postgres
-  password: password
+  url: <%= ENV['DATABASE_URL'] %>
