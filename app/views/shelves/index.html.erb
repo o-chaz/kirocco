@@ -1,0 +1,12 @@
+<h2>あなたの棚一覧</h2>
+
+<%= link_to "＋ 棚を作る", new_shelf_path, class: "btn" %>
+
+<ul>
+  <% @shelves.each do |shelf| %>
+    <li>
+      <h3><%= link_to shelf.title, shelf_path(shelf) %></h3>
+      <p><%= shelf.description %></p>
+    </li>
+  <% end %>
+</ul>

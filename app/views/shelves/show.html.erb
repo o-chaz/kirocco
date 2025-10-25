@@ -1,0 +1,14 @@
+<h2><%= @shelf.title %></h2>
+<p><%= @shelf.description %></p>
+
+<% if @shelf.image.present? %>
+  <%= image_tag @shelf.image.url, alt: @shelf.title, style: "max-width: 300px;" %>
+<% end %>
+
+<hr>
+
+<%= link_to "編集", edit_shelf_path(@shelf) %> |
+<%= form_with model: @shelf, method: :delete, local: true do |f| %>
+  <%= f.submit "削除する", data: { confirm: "本当に削除しますか？" } %>
+<% end %>
+<%= link_to "一覧に戻る", shelves_path %>
