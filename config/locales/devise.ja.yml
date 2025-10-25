@@ -20,6 +20,12 @@ ja:
         update: "更新する"
         cancel_account: "アカウントを削除する"
         back: "戻る"
+    failure:
+      not_found_in_database: "メールアドレスまたはパスワードが違います。"
+      invalid: "メールアドレスまたはパスワードが違います。"
+      already_authenticated: "すでにログインしています。"
+      unauthenticated: "ログインまたは登録が必要です。"
+      
     shared:
       links:
         sign_in: "ログインはこちら"
