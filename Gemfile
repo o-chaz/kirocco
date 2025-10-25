@@ -23,6 +23,9 @@ gem "jbuilder"
 gem "bootsnap", require: false
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
+# --- Authentication ---
+gem "devise"
+
 group :development, :test do
   gem "debug", platforms: %i[mri windows]
 end

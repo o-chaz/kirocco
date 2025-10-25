@@ -1,0 +1,27 @@
+ja:
+  devise:
+    shared:
+      links:
+        sign_in: "ログイン"
+        sign_up: "新規登録"
+        forgot_your_password: "パスワードをお忘れですか？"
+        didn't_receive_confirmation_instructions: "確認メールが届きませんでしたか？"
+        didn't_receive_unlock_instructions: "ロック解除メールが届きませんでしたか？"
+    sessions:
+      new:
+        sign_in: "ログイン"
+        email: "メールアドレス"
+        password: "パスワード"
+        remember_me: "ログイン情報を記憶する"
+        submit: "ログイン"
+    registrations:
+      new:
+        sign_up: "新規登録"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認用）"
+        submit: "アカウントを作成"
+    passwords:
+      new:
+        forgot_your_password: "パスワードをお忘れですか？"
+        send_me_reset_password_instructions: "パスワード再設定メールを送信"

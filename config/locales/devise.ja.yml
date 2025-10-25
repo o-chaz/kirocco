@@ -1,0 +1,60 @@
+ja:
+  devise:
+    registrations:
+      new:
+        sign_up: "新規登録"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_length: "(%{count}文字以上)"
+        password_confirmation: "パスワード（確認用）"
+        submit: "アカウントを作成"
+      signed_up: "アカウントを作成しました。ようこそ！"
+      updated: "アカウント情報を更新しました。"
+      destroyed: "アカウントを削除しました。"
+      edit:
+        title: "アカウント情報の編集"
+        email: "メールアドレス"
+        password: "パスワード（変更しない場合は空欄のままで構いません）"
+        password_confirmation: "パスワード（確認用）"
+        current_password: "現在のパスワード"
+        update: "更新する"
+        cancel_account: "アカウントを削除する"
+        back: "戻る"
+    shared:
+      links:
+        sign_in: "ログインはこちら"
+        sign_up: "新規登録はこちら"
+        forgot_your_password: "パスワードをお忘れの方はこちら"
+        didnt_receive_confirmation: "確認メールを受け取っていませんか？"
+        didnt_receive_unlock: "アカウントのロック解除メールを受け取っていませんか？"
+        sign_in_with: "%{provider}でログイン"
+
+    sessions:
+      new:
+        sign_in: "ログイン"
+        email: "メールアドレス"
+        password: "パスワード"
+        remember_me: "ログイン情報を記憶する"
+        submit: "ログイン"
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+
+    passwords:
+      send_instructions: "パスワード再設定メールを送信しました。"
+      updated: "パスワードを更新しました。"
+
+  errors:
+    messages:
+      not_saved: "保存に失敗しました。入力内容を確認してください。"
+      too_short: "が短すぎます。%{count}文字以上にしてください。"
+
+  failure:
+    user:
+      already_authenticated: "すでにログインしています。"
+    already_authenticated: "すでにログインしています。"
+
+  helpers:
+    submit:
+      user:
+        create: "登録する"
+        update: "更新する"
