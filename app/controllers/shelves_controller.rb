@@ -31,7 +31,7 @@ end
   # GET /shelves/new
   def new
     @shelf = Shelf.new
-    render partial: "form", locals: { shelf: @shelf }
+    render partial: "shelves/form", locals: { shelf: @shelf }
   end
 
   # GET /shelves/1/edit
@@ -50,10 +50,41 @@ end
   def create
     @shelf = current_user.shelves.build(shelf_params)
 
-    if @shelf.save
-      render partial: "details", locals: { selected_shelf: @shelf }
-    else
-      render partial: "form", status: :unprocessable_entity
+    respond_to do |format|
+      if @shelf.save
+        format.turbo_stream do
+          render turbo_stream: [
+            # 左カラム更新
+            turbo_stream.replace(
+              "shelf_list",
+              partial: "shelves/list",
+              locals: { shelves: current_user.shelves }
+            ),
+            # 真ん中更新
+            turbo_stream.replace(
+              "shelf_content",
+              partial: "shelves/content",
+              locals: { selected_shelf: @shelf }
+            ),
+            # 右カラム更新
+            turbo_stream.replace(
+              "shelf_details",
+              partial: "shelves/details",
+              locals: { selected_shelf: @shelf }
+            )
+          ]
+        end
+        format.html { redirect_to @shelf, notice: "棚を作成しました。" }
+      else
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(
+            "shelf_details",
+            partial: "shelves/form",
+            locals: { shelf: @shelf }
+          )
+        end
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -86,14 +117,21 @@ def update
 end
 
   # DELETE /shelves/1 or /shelves/1.json
-  def destroy
-    @shelf.destroy!
+def destroy
+  @shelf.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to shelves_path, notice: "Shelf was successfully destroyed.", status: :see_other }
-      format.json { head :no_content }
+  respond_to do |format|
+    format.turbo_stream do
+      # ✅ 削除後に左カラムを更新
+      @shelves = current_user.shelves
+      render turbo_stream: turbo_stream.replace("shelf_list",
+        partial: "shelves/list",
+        locals: { shelves: @shelves })
     end
+
+    format.html { redirect_to shelves_path, notice: "Shelf was successfully destroyed.", status: :see_other }
   end
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
