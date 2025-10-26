@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>Kirocco</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,22 +9,79 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <body class="bg-light">
+    <!-- ✅ ヘッダー -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm px-4">
+      <div class="container-fluid">
+        <!-- 左：ロゴ -->
+        <a class="navbar-brand fw-semibold" href="#">Kirocco</a>
 
-  <% if user_signed_in? %>
-  <%= button_to "ログアウト",
-        destroy_user_session_path,
-        method: :delete,
-        data: { turbo: false },
-        class: "btn btn-danger" %>
-<% else %>
-  <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-primary me-2" %>
-  <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success" %>
-<% end %>
+        <!-- 右：ハンバーガーメニュー -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarMenu"
+          aria-controls="navbarMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <%= yield %>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="/mypage">My Page</a></li>
+            <li class="nav-item"><a class="nav-link" href="/settings">Settings</a></li>
+            <li class="nav-item">
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-danger" %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ✅ 3カラムエリア -->
+    <div class="container-fluid mt-3 px-0">
+      <div class="row g-0" style="min-height: calc(100vh - 70px);">
+        <!-- 🧺 左カラム -->
+        <aside class="col-md-3 bg-white border-end p-4">
+          <h5 class="fw-semibold mb-3">棚一覧</h5>
+          <button class="btn btn-outline-primary w-100 mb-3">＋棚追加</button>
+          <div class="list-group">
+            <button class="list-group-item list-group-item-action">Shelf Name 1</button>
+            <button class="list-group-item list-group-item-action">Shelf Name 2</button>
+            <button class="list-group-item list-group-item-action">Shelf Name 3</button>
+          </div>
+        </aside>
+
+        <!-- 🪞 中央カラム -->
+        <main class="col-md-6 d-flex flex-column align-items-center bg-light p-4">
+          <div class="shelf border rounded p-4 bg-white text-center shadow-sm" style="width: 100%; max-width: 480px;">
+            <h5 class="mb-3 fw-semibold">棚タイトル</h5>
+            <div class="shelf-body py-5 text-muted">
+              ここにアイテム画像を並べる予定
+            </div>
+            <button class="btn btn-outline-secondary mt-3">＋アイテム追加</button>
+          </div>
+        </main>
+
+        <!-- 🏷️ 右カラム -->
+        <aside class="col-md-3 bg-white border-start p-4">
+          <h5 class="fw-semibold mb-3">棚説明</h5>
+          <div class="mb-3">
+            <label class="form-label">説明</label>
+            <p class="border rounded p-2 bg-light">ここに説明</p>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Tags</label><br>
+            <span class="badge bg-secondary me-1">Tag</span>
+            <span class="badge bg-secondary me-1">Tag</span>
+          </div>
+          <button class="btn btn-outline-primary w-100">編集</button>
+        </aside>
+      </div>
+    </div>
+
     <%= javascript_importmap_tags %>
   </body>
 </html>
