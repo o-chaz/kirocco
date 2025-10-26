@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Kirocco</title>
+    <title>kirocco</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,40 +10,42 @@
   </head>
 
   <body class="bg-light">
-    <!-- ✅ ヘッダー -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm px-4">
-      <div class="container-fluid">
-        <!-- 左：ロゴ -->
-        <a class="navbar-brand fw-semibold" href="#">Kirocco</a>
+    <!-- ヘッダー -->
+    <nav class="navbar navbar-light bg-white border-bottom shadow-sm px-4">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    <!-- 左：ロゴ -->
+    <a class="navbar-brand fw-semibold" href="#">Kirocco</a>
 
-        <!-- 右：ハンバーガーメニュー -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarMenu"
-          aria-controls="navbarMenu"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- 右：ハンバーガードロップダウン -->
+    <div class="dropdown">
+      <button
+        class="btn btn-light border dropdown-toggle p-2"
+        type="button"
+        id="menuDropdown"
+        data-bs-toggle="dropdown"
+        aria-expanded="false">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
-          <ul class="navbar-nav mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link" href="/mypage">My Page</a></li>
-            <li class="nav-item"><a class="nav-link" href="/settings">Settings</a></li>
-            <li class="nav-item">
-              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-danger" %>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="menuDropdown">
+        <li><a class="dropdown-item" href="/mypage">My Page</a></li>
+        <li><a class="dropdown-item" href="/settings">Settings</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li>
+          <%= link_to "Logout", destroy_user_session_path,
+              method: :delete,
+              class: "dropdown-item text-danger" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-    <!-- ✅ 3カラムエリア -->
+
+    <!-- 3カラムエリア -->
     <div class="container-fluid mt-3 px-0">
       <div class="row g-0" style="min-height: calc(100vh - 70px);">
-        <!-- 🧺 左カラム -->
+        <!-- 左カラム -->
         <aside class="col-md-3 bg-white border-end p-4">
           <h5 class="fw-semibold mb-3">棚一覧</h5>
           <button class="btn btn-outline-primary w-100 mb-3">＋棚追加</button>
@@ -54,7 +56,7 @@
           </div>
         </aside>
 
-        <!-- 🪞 中央カラム -->
+        <!-- 中央カラム -->
         <main class="col-md-6 d-flex flex-column align-items-center bg-light p-4">
           <div class="shelf border rounded p-4 bg-white text-center shadow-sm" style="width: 100%; max-width: 480px;">
             <h5 class="mb-3 fw-semibold">棚タイトル</h5>
@@ -65,7 +67,7 @@
           </div>
         </main>
 
-        <!-- 🏷️ 右カラム -->
+        <!-- 右カラム -->
         <aside class="col-md-3 bg-white border-start p-4">
           <h5 class="fw-semibold mb-3">棚説明</h5>
           <div class="mb-3">
