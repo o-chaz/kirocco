@@ -1,0 +1,15 @@
+<div class="col-md-3 bg-white border-end p-4">
+  <h5 class="fw-semibold mb-3">Shelves</h5>
+  <%= link_to "＋ New Shelf", new_shelf_path, 
+              class: "btn btn-outline-primary w-100 mb-2",
+              data: { turbo_frame: "shelf_details" } %>
+
+  <div class="list-group">
+    <% @shelves.each do |shelf| %>
+      <%= link_to shelf.title,
+            shelf_path(shelf),
+            class: "list-group-item list-group-item-action",
+            data: { turbo_stream: true } %>
+    <% end %>
+  </div>
+</div>

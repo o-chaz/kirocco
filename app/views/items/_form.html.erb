@@ -1,0 +1,24 @@
+<turbo-frame id="shelf_details">
+  <h5 class="fw-semibold mb-3"><%= item.persisted? ? "アイテムを編集" : "新しいアイテムを追加" %></h5>
+
+  <%= form_with(model: [@shelf, item], local: false) do |f| %>
+    <div class="mb-3">
+      <%= f.label :title, "タイトル", class: "form-label" %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :description, "説明", class: "form-label" %>
+      <%= f.text_area :description, rows: 3, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :image, "画像アップロード", class: "form-label" %>
+      <%= f.file_field :image, class: "form-control" %>
+    </div>
+
+    <div class="d-grid">
+      <%= f.submit (item.persisted? ? "更新する" : "追加する"), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</turbo-frame>

@@ -1,14 +1,36 @@
-<p style="color: green"><%= notice %></p>
+<div class="container-fluid mt-3 px-0">
+  <div class="row g-0" style="min-height: calc(100vh - 70px);">
+    <!-- 左カラム -->
+    <aside class="col-md-3 bg-white border-end p-4">
+      <h5 class="fw-semibold mb-3">棚一覧</h5>
+      <% @shelves.each do |shelf| %>
+        <%= link_to shelf.title,
+          shelf_path(shelf),
+          data: { turbo_stream: true },
+          class: "list-group-item list-group-item-action d-block mb-2" %>
+      <% end %>
+    </aside>
 
-<h1>Shelves</h1>
+    <!-- 中央カラム -->
+    <main class="col-md-6 d-flex flex-column align-items-center bg-light p-4">
+      <%= turbo_frame_tag "shelf_content" do %>
+        <% if @selected_shelf.present? %>
+          <%= render "shelves/content", selected_shelf: @selected_shelf %>
+        <% else %>
+          <p class="text-muted">棚を選択してください</p>
+        <% end %>
+      <% end %>
+    </main>
 
-<div id="shelves">
-  <% @shelves.each do |shelf| %>
-    <%= render shelf %>
-    <p>
-      <%= link_to "Show this shelf", shelf %>
-    </p>
-  <% end %>
+    <!-- 右カラム -->
+    <aside class="col-md-3 bg-white border-start p-4">
+      <%= turbo_frame_tag "shelf_details" do %>
+        <% if @selected_shelf.present? %>
+          <%= render "shelves/details", selected_shelf: @selected_shelf %>
+        <% else %>
+          <p class="text-muted">棚を選択すると説明が表示されます。</p>
+        <% end %>
+      <% end %>
+    </aside>
+  </div>
 </div>
-
-<%= link_to "New shelf", new_shelf_path %>

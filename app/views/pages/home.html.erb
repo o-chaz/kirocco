@@ -1,5 +1,12 @@
-<div class="container text-center mt-5">
-  <h1 class="text-primary mb-4">Kirocco</h1>
-  <p class="lead">お気に入りのアイテムを棚に飾って、あなただけのコレクションを作ろう。</p>
-  <button class="btn btn-success mt-3">はじめる</button>
+<div class="text-center py-5">
+  <h1 class="fw-bold mb-4">Welcome to Kirocco 🐦</h1>
+
+  <% if user_signed_in? %>
+    <p class="text-muted mb-4">こんにちは、<%= current_user.email %> さん！</p>
+    <%= link_to "マイページへ", shelves_path, class: "btn btn-primary btn-lg" %>
+  <% else %>
+    <p class="text-muted mb-4">お気に入りのアイテムを棚に飾ってみませんか？</p>
+    <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-primary btn-lg me-2" %>
+    <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success btn-lg" %>
+  <% end %>
 </div>
