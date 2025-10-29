@@ -43,3 +43,5 @@ end
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'marcel'
+
+gem "cloudinary", "~> 2.4"
