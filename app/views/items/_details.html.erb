@@ -1,0 +1,21 @@
+<turbo-frame id="shelf_details">
+  <h5 class="fw-semibold mb-3"><%= item.title %></h5>
+
+  <% if item.image.present? %>
+    <div class="mb-3">
+      <%= image_tag item.image.url, class: "img-fluid rounded shadow-sm" %>
+    </div>
+  <% end %>
+
+  <p class="text-muted"><%= item.description.presence || "説明はありません" %></p>
+
+  <div class="d-flex gap-2 mt-3">
+    <%= link_to "編集", edit_shelf_item_path(item.shelf, item),
+        class: "btn btn-outline-primary flex-grow-1",
+        data: { turbo_frame: "shelf_details" } %>
+    <%= link_to "削除", shelf_item_path(item.shelf, item),
+        method: :delete,
+        data: { confirm: "削除してもよいですか？" },
+        class: "btn btn-outline-danger flex-grow-1" %>
+  </div>
+</turbo-frame>

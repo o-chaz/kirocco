@@ -1,27 +1,25 @@
-<%= form_with(model: shelf) do |form| %>
-  <% if shelf.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(shelf.errors.count, "error") %> prohibited this shelf from being saved:</h2>
+<turbo-frame id="shelf_details">
+  <h5 class="fw-semibold mb-3"><%= shelf.persisted? ? "棚の編集" : "新しい棚" %></h5>
 
-      <ul>
-        <% shelf.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <%= form_with(model: shelf, local: false) do |f| %>
+    <div class="mb-3">
+      <%= f.label :title, "タイトル", class: "form-label" %>
+      <%= f.text_field :title, class: "form-control" %>
     </div>
-  <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
+    <div class="mb-3">
+      <%= f.label :description, "説明", class: "form-label" %>
+      <%= f.text_area :description, rows: 3, class: "form-control" %>
+    </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+    <%= f.submit (shelf.persisted? ? "更新" : "作成"), class: "btn btn-primary w-100" %>
+    <% if shelf.persisted? %>
+      <hr class="my-3">
+      <%= button_to "削除する",
+          shelf_path(shelf),
+          method: :delete,
+          data: { turbo: false, confirm: "本当に削除しますか？" },
+          class: "btn btn-outline-danger w-100" %>
+    <% end %>
+    <% end %>
+</turbo-frame>

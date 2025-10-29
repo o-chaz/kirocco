@@ -1,0 +1,51 @@
+<turbo-frame id="shelf_content">
+  <% if selected_shelf.present? %>
+    <div class="text-center mb-2">
+  <h5 class="fw-semibold"><%= selected_shelf.title %></h5>
+  </div>
+
+    <div
+      class="shelf border rounded p-4 bg-white text-center position-relative"
+      style="
+        width: 100%;
+        max-width: 400px;
+        min-height: 400px;
+        background-image: url('<%= asset_path("empty_shelf.png") %>');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        overflow-y: auto;
+      "
+    >
+
+      <!-- アイテム表示 -->
+      <% if selected_shelf.items.any? %>
+        <div class="position-relative d-flex flex-wrap justify-content-center gap-3 mt-4">
+          <% selected_shelf.items.each do |item| %>
+            <%= link_to shelf_item_path(selected_shelf, item),
+              data: { turbo_frame: "shelf_details" },
+              class: "item-link" do %>
+              <%= image_tag item.image.url,
+                class: "item-image",
+                style: "width: 80px; height: auto;" %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      </div>
+
+      <!-- アイテム追加ボタン -->
+      <div class="mt-4 d-flex justify-content-center">
+        <%= link_to "＋ Add Item",
+          new_shelf_item_path(selected_shelf),
+          class: "btn btn-outline-secondary",
+          data: { turbo_frame: "shelf_details" } %>
+      </div>
+    
+  <% else %>
+    <div class="text-center text-muted mt-5">
+      <h5 class="fw-semibold mb-3">棚を選択してください</h5>
+      <p>左のリストから棚をクリックすると、ここに内容が表示されます。</p>
+    </div>
+  <% end %>
+</turbo-frame>

@@ -1,0 +1,27 @@
+<turbo-frame id="shelf_details">
+  <% if selected_shelf.present? %>
+    <h5 class="fw-semibold mb-3">棚説明</h5>
+
+    <div class="mb-3">
+      <label class="form-label">説明</label>
+      <% if selected_shelf.description.present? %>
+        <p class="border rounded p-2 bg-light"><%= selected_shelf.description %></p>
+      <% else %>
+        <p class="text-muted">説明はありません</p>
+      <% end %>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Tags</label><br>
+      <span class="badge bg-secondary me-1">Tag</span>
+      <span class="badge bg-secondary me-1">Tag</span>
+    </div>
+
+    <%= link_to "編集",
+      edit_shelf_path(selected_shelf),
+      class: "btn btn-outline-primary w-100",
+      data: { turbo_frame: "shelf_details" } %>
+  <% else %>
+    <p class="text-muted">棚を選択してください</p>
+  <% end %>
+</turbo-frame>
