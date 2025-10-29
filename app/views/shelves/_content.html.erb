@@ -1,10 +1,22 @@
 <turbo-frame id="shelf_content">
   <% if selected_shelf.present? %>
+    <div class="text-center mb-2">
+  <h5 class="fw-semibold"><%= selected_shelf.title %></h5>
+  </div>
+
     <div
       class="shelf border rounded p-4 bg-white text-center position-relative"
-      style="width: 100%; max-width: 500px; background-image: url('<%= asset_path("empty_shelf.png") %>'); background-size: contain; background-repeat: no-repeat; background-position: center; min-height: 300px;"
+      style="
+        width: 100%;
+        max-width: 400px;
+        min-height: 400px;
+        background-image: url('<%= asset_path("empty_shelf.png") %>');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        overflow-y: auto;
+      "
     >
-      <h5 class="mb-3 fw-semibold"><%= selected_shelf.title %></h5>
 
       <!-- アイテム表示 -->
       <% if selected_shelf.items.any? %>
@@ -20,6 +32,7 @@
           <% end %>
         </div>
       <% end %>
+      </div>
 
       <!-- アイテム追加ボタン -->
       <div class="mt-4 d-flex justify-content-center">
@@ -28,7 +41,7 @@
           class: "btn btn-outline-secondary",
           data: { turbo_frame: "shelf_details" } %>
       </div>
-    </div>
+    
   <% else %>
     <div class="text-center text-muted mt-5">
       <h5 class="fw-semibold mb-3">棚を選択してください</h5>

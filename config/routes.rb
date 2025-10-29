@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
+  get 'settings/index'
   devise_for :users
 
   resources :shelves do
     resources :items, only: [:new, :create, :show, :edit, :update, :destroy]
   end
 
-  # ログイン時と非ログイン時でトップを分ける
+  # 設定ページ（仮）
+  get "settings", to: "settings#index"
+
   authenticated :user do
     root to: "shelves#index", as: :authenticated_root
   end

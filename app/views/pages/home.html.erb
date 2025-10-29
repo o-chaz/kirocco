@@ -1,12 +1,23 @@
 <div class="text-center py-5">
-  <h1 class="fw-bold mb-4">Welcome to Kirocco 🐦</h1>
+  <h1 class="fw-bold mb-4">Welcome to Kirocco</h1>
 
   <% if user_signed_in? %>
     <p class="text-muted mb-4">こんにちは、<%= current_user.email %> さん！</p>
     <%= link_to "マイページへ", shelves_path, class: "btn btn-primary btn-lg" %>
+
   <% else %>
-    <p class="text-muted mb-4">お気に入りのアイテムを棚に飾ってみませんか？</p>
-    <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-primary btn-lg me-2" %>
-    <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success btn-lg" %>
+    <p class="lead mb-4">
+      好きなアイテムを記録し、自分だけの「棚」に飾ってコレクションを楽しめるアプリ
+    </p>
+
+    <p class="text-muted mb-5">
+      デジタルの棚に買ったもの・欲しい物・訪れた場所などをきれいに並べ、眺めることができます。<br>
+      コレクションだけではなく、欲しいものリストや日記としても活用できます。
+    </p>
+
+    <div class="d-flex justify-content-center gap-3">
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-primary btn-lg" %>
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success btn-lg" %>
+    </div>
   <% end %>
 </div>
