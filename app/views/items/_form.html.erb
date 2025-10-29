@@ -1,5 +1,14 @@
 <turbo-frame id="shelf_details">
   <h5 class="fw-semibold mb-3"><%= item.persisted? ? "アイテムを編集" : "新しいアイテムを追加" %></h5>
+  
+  <% if item.errors.any? %>
+    <div class="alert alert-danger">
+        <% item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <%= form_with(model: [@shelf, item], local: false) do |f| %>
     <div class="mb-3">
@@ -14,7 +23,7 @@
 
     <div class="mb-3">
       <%= f.label :image, "画像アップロード", class: "form-label" %>
-      <%= f.file_field :image, class: "form-control" %>
+      <%= f.file_field :image, class: "form-control", required: true %>
     </div>
 
     <div class="d-grid">

@@ -2,7 +2,7 @@
   <% shelves.each do |shelf| %>
     <%= link_to shelf.title,
       shelf_path(shelf),
-      data: { turbo_frame: "shelf_content" },
+      data: { turbo_stream: true },
       class: "list-group-item list-group-item-action d-block mb-2" %>
   <% end %>
 </div>
